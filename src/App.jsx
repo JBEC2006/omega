@@ -19,7 +19,7 @@ const NAV_LINKS = [
 ]
 
 function Logo({ small = false }) {
-  const h = small ? 64 : 80
+  const h = small ? 64 : 96
   return (
     <a href="#hero" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
       <img src={logoNaranja} alt="Gimnasio Omega" height={h} style={{ height: h, width: 'auto', objectFit: 'contain' }} />
@@ -79,7 +79,7 @@ function Navbar() {
       backdropFilter: 'blur(12px)',
       borderBottom: '1px solid rgba(255,255,255,0.08)',
     }}>
-      <div style={{ maxWidth: '72rem', margin: '0 auto', padding: '0 1.5rem' }}>
+      <div style={{ padding: '0 3rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '108px' }}>
           <Logo />
 

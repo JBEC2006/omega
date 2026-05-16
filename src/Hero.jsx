@@ -203,7 +203,7 @@ export default function Hero({ bgImage }) {
           color: 'rgba(255,255,255,0.58)',
           margin: '10px 0 20px',
         }}>
-          Entrená en serio. Resultados reales.
+          Gimnasio Omega · Entrená en serio. Resultados reales.
         </p>
 
         {/* Botones */}

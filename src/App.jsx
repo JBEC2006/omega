@@ -84,7 +84,7 @@ function Navbar() {
           <Logo />
 
           {/* Desktop links */}
-          <div className="nav-desktop" style={{ gap: '2.5rem', alignItems: 'center' }}>
+          <div className="nav-desktop" style={{ gap: '4rem', alignItems: 'center' }}>
             {NAV_LINKS.map(l => (
               <a key={l.href} href={l.href} className="nav-link">
                 {l.label}

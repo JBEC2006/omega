@@ -95,7 +95,7 @@ export default function Hero({ bgImage }) {
       id="hero"
       style={{
         position: 'relative',
-        minHeight: '100vh',
+        minHeight: 'calc(100vh - 108px)',
         overflow: 'hidden',
         /* Fallback gradient siempre presente como background */
         background: 'radial-gradient(ellipse at 30% 60%, rgba(249,115,22,0.18), transparent 60%), #0D0D0D',
@@ -154,7 +154,7 @@ export default function Hero({ bgImage }) {
         style={{
           position: 'relative',
           zIndex: 10,
-          padding: '0 6% 28px',
+          padding: '0 6% 16px',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
@@ -173,7 +173,7 @@ export default function Hero({ bgImage }) {
             fontWeight: 600,
             letterSpacing: '0.18em',
             textTransform: 'uppercase',
-            margin: '0 0 10px',
+            margin: '0 0 8px',
           }}
         >
           <PinIcon />
@@ -185,7 +185,7 @@ export default function Hero({ bgImage }) {
         {/* Headline */}
         <h1 style={{
           fontFamily: "'Bebas Neue', cursive",
-          fontSize: 'clamp(44px, 7vw, 96px)',
+          fontSize: 'clamp(40px, 6.5vw, 88px)',
           lineHeight: 0.92,
           margin: 0,
           color: '#fff',
@@ -201,7 +201,7 @@ export default function Hero({ bgImage }) {
           fontWeight: 400,
           fontSize: 'clamp(14px, 1.8vw, 19px)',
           color: 'rgba(255,255,255,0.58)',
-          margin: '12px 0 24px',
+          margin: '10px 0 20px',
         }}>
           Entrená en serio. Resultados reales.
         </p>

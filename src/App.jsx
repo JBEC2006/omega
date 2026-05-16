@@ -18,7 +18,7 @@ const NAV_LINKS = [
 ]
 
 function Logo({ small = false }) {
-  const h = small ? 40 : 52
+  const h = small ? 64 : 80
   return (
     <a href="#hero" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
       <img src={logoNaranja} alt="Gimnasio Omega" height={h} style={{ height: h, width: 'auto', objectFit: 'contain' }} />
@@ -27,7 +27,7 @@ function Logo({ small = false }) {
 }
 
 function LogoBlanco({ small = false }) {
-  const h = small ? 40 : 52
+  const h = small ? 64 : 80
   return (
     <a href="#hero" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
       <img src={logoBlanco} alt="Gimnasio Omega" height={h} style={{ height: h, width: 'auto', objectFit: 'contain' }} />
@@ -79,7 +79,7 @@ function Navbar() {
       borderBottom: '1px solid rgba(255,255,255,0.08)',
     }}>
       <div style={{ maxWidth: '72rem', margin: '0 auto', padding: '0 1.5rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '96px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '108px' }}>
           <Logo />
 
           {/* Desktop links */}
@@ -475,15 +475,15 @@ function Planes() {
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', backgroundColor: 'rgba(0,158,227,0.07)', borderRadius: '8px', padding: '10px 14px', marginBottom: '1.25rem' }}>
-              {/* Solo el ícono oval — imagen cuadrada, oval ocupa el 52% superior */}
-              <div style={{ width: '44px', height: '24px', overflow: 'hidden', flexShrink: 0 }}>
+              {/* Solo el ícono oval — clip al 50% del alto, sin pixel sobrante */}
+              <div style={{ width: '40px', height: '21px', overflow: 'hidden', flexShrink: 0, borderRadius: '2px' }}>
                 <img
                   src={mercadoPagoLogo}
                   alt="Mercado Pago"
-                  style={{ width: '44px', display: 'block' }}
+                  style={{ width: '40px', display: 'block', marginTop: '-1px' }}
                 />
               </div>
-              <span style={{ color: '#009ee3', fontSize: '0.92rem', fontWeight: 600 }}>Mercado Pago — hasta 12 cuotas sin recargo</span>
+              <span style={{ color: '#009ee3', fontSize: '0.88rem', fontWeight: 700, whiteSpace: 'nowrap' }}>12 cuotas sin recargo con Mercado Pago</span>
             </div>
 
             <ExtLink href={WA_LINK} className="btn-planes-wa">

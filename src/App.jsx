@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Hero from './Hero.jsx'
 import logoNaranja from './assets/omega_logo_naranja_transparente.png'
 import logoBlanco from './assets/omega_logo_blanco_transparente.png'
 import mercadoPagoLogo from './assets/mercado_pago_logo_transparente.png'
@@ -158,82 +159,6 @@ function Navbar() {
   )
 }
 
-// ─── HERO ─────────────────────────────────────────────────────────────────────
-function Hero() {
-  return (
-    <section id="hero" style={{
-      position: 'relative',
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      overflow: 'hidden',
-      backgroundColor: '#0D0D0D',
-    }}>
-      {/* Orange radial glow */}
-      <div style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none',
-        background: 'radial-gradient(ellipse 90% 65% at 50% 38%, rgba(249,115,22,0.20) 0%, transparent 68%)',
-      }} />
-      {/* Grid overlay */}
-      <div style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.045,
-        backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)',
-        backgroundSize: '44px 44px',
-      }} />
-
-      <div style={{ position: 'relative', zIndex: 10, textAlign: 'center', padding: '2rem 1.5rem', maxWidth: '64rem', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.2rem' }}>
-
-        {/* Logo protagonista — ocupa el hero */}
-        <img
-          src={logoNaranja}
-          alt="Gimnasio Omega"
-          style={{
-            width: 'clamp(280px, 52vw, 480px)',
-            height: 'auto',
-            filter: 'drop-shadow(0 0 50px rgba(249,115,22,0.65)) drop-shadow(0 0 120px rgba(249,115,22,0.25))',
-          }}
-        />
-
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
-          <h1 style={{
-            fontFamily: "'Bebas Neue', cursive",
-            fontSize: 'clamp(1.9rem, 5vw, 4.2rem)',
-            lineHeight: 1,
-            color: '#fff',
-            margin: 0,
-            letterSpacing: '0.04em',
-          }}>
-            DONDE SE FORJAN&nbsp;
-            <span style={{ color: '#F97316' }}>LOS MEJORES</span>
-          </h1>
-          <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.78rem', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', margin: 0 }}>
-            Coronel Brandzen 2178 · Parque Batlle, Montevideo
-          </p>
-        </div>
-
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.875rem', justifyContent: 'center', marginTop: '0.4rem' }}>
-          <a href="#planes" className="btn btn-orange">Ver Planes</a>
-          <ExtLink href={WA_LINK} className="btn btn-green">
-            <WhatsAppIcon size={20} />
-            Consultar
-          </ExtLink>
-          <a href="#horarios" className="btn btn-outline">Ver Horarios</a>
-        </div>
-
-      </div>
-
-      <div style={{
-        position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)',
-        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px',
-        animation: 'bounce 2s infinite', opacity: 0.35,
-      }}>
-        <div style={{ width: '1px', height: '32px', backgroundColor: 'rgba(255,255,255,0.5)' }} />
-        <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.5)' }} />
-      </div>
-    </section>
-  )
-}
 
 function btnStyle(variant) {
   const base = {
@@ -662,7 +587,7 @@ export default function App() {
     <>
       <Navbar />
       <main>
-        <Hero />
+        <Hero bgImage="/fotos/hero.jpg" />
         <Nosotros />
         <Disciplinas />
         <Horarios />

@@ -476,14 +476,14 @@ function Planes() {
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', backgroundColor: 'rgba(0,158,227,0.07)', borderRadius: '8px', padding: '10px 14px', marginBottom: '1.25rem' }}>
               {/* Solo el ícono oval — clip al 50% del alto, sin pixel sobrante */}
-              <div style={{ width: '40px', height: '21px', overflow: 'hidden', flexShrink: 0, borderRadius: '2px' }}>
+              <div style={{ width: '52px', height: '27px', overflow: 'hidden', flexShrink: 0, borderRadius: '2px' }}>
                 <img
                   src={mercadoPagoLogo}
                   alt="Mercado Pago"
-                  style={{ width: '40px', display: 'block', marginTop: '-1px' }}
+                  style={{ width: '52px', display: 'block', marginTop: '-1px' }}
                 />
               </div>
-              <span style={{ color: '#009ee3', fontSize: '0.88rem', fontWeight: 700, whiteSpace: 'nowrap' }}>12 cuotas sin recargo con Mercado Pago</span>
+              <span style={{ color: '#009ee3', fontSize: '1rem', fontWeight: 700, whiteSpace: 'nowrap' }}>12 cuotas sin recargo con Mercado Pago</span>
             </div>
 
             <ExtLink href={WA_LINK} className="btn-planes-wa">

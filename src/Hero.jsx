@@ -2,6 +2,14 @@ import { useState } from 'react'
 
 const WA_LINK = "https://api.whatsapp.com/send?phone=59897863648&text=Hola%2C%20quiero%20hacer%20una%20consulta."
 
+function PinIcon() {
+  return (
+    <svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0, marginTop: '1px' }}>
+      <path d="M5.5 0C2.462 0 0 2.462 0 5.5c0 3.85 5.5 8.5 5.5 8.5S11 9.35 11 5.5C11 2.462 8.538 0 5.5 0zm0 7.5a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" fill="#F97316"/>
+    </svg>
+  )
+}
+
 function WhatsAppIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -141,7 +149,7 @@ export default function Hero({ bgImage }) {
         style={{
           position: 'relative',
           zIndex: 10,
-          padding: '0 6% 72px',
+          padding: '0 6% 44px',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
@@ -151,25 +159,29 @@ export default function Hero({ bgImage }) {
         <p
           className="hero-badge"
           style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
             color: 'rgba(255,255,255,0.7)',
             fontSize: '11px',
             fontFamily: "'Barlow', sans-serif",
             fontWeight: 600,
             letterSpacing: '0.18em',
             textTransform: 'uppercase',
-            margin: '0 0 14px',
+            margin: '0 0 10px',
           }}
         >
-          📍 Coronel Brandzen 2178&nbsp;&nbsp;
-          <span style={{ color: '#F97316' }}>•</span>
-          &nbsp;&nbsp;Parque Batlle, Montevideo
+          <PinIcon />
+          Coronel Brandzen 2178
+          <span style={{ color: 'rgba(255,255,255,0.35)', margin: '0 2px' }}>·</span>
+          Parque Batlle, Montevideo
         </p>
 
         {/* Headline */}
         <h1 style={{
           fontFamily: "'Bebas Neue', cursive",
-          fontSize: 'clamp(52px, 8.5vw, 108px)',
-          lineHeight: 0.9,
+          fontSize: 'clamp(44px, 7vw, 96px)',
+          lineHeight: 0.92,
           margin: 0,
           color: '#fff',
           letterSpacing: '0.02em',
@@ -184,7 +196,7 @@ export default function Hero({ bgImage }) {
           fontWeight: 400,
           fontSize: 'clamp(14px, 1.8vw, 19px)',
           color: 'rgba(255,255,255,0.58)',
-          margin: '14px 0 32px',
+          margin: '12px 0 24px',
         }}>
           Entrená en serio. Resultados reales.
         </p>

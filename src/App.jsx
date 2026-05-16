@@ -532,8 +532,8 @@ function Contacto() {
             <TikTokIcon size={22} />
             @gimnasioomega.uy
           </ExtLink>
-          <ExtLink href={MAPS} className="btn-contact" style={{ background: '#1a1a1a', color: '#fff', border: '1px solid rgba(255,255,255,0.18)' }}>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <ExtLink href={MAPS} className="btn-contact" style={{ background: '#1a1a1a', color: '#fff', border: '1px solid rgba(234,67,53,0.45)' }}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#EA4335">
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
             </svg>
             Ver en Google Maps

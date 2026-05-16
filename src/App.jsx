@@ -4,6 +4,7 @@ const WA_LINK = "https://api.whatsapp.com/send?phone=59897863648&text=Hola%2C%20
 const INSTAGRAM = "https://www.instagram.com/gimnasio.omega.uy/"
 const TIKTOK = "https://www.tiktok.com/@gimnasioomega.uy"
 const TURNOS = "https://omega.turnosweb.com/"
+const MAPS = "https://www.google.com/maps/place/C.+Cnel.+Brandzen+2178,+11200+Montevideo,+Departamento+de+Montevideo/@-34.8991907,-56.1676435,17z/data=!3m1!4b1!4m6!3m5!1s0x959f81ad241e76e3:0x9b47b77e252368ac!8m2!3d-34.8991907!4d-56.1676435!16s%2Fg%2F11l6v5gknw?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D"
 
 const NAV_LINKS = [
   { label: 'Nosotros', href: '#nosotros' },
@@ -531,6 +532,12 @@ function Contacto() {
             <TikTokIcon size={22} />
             @gimnasioomega.uy
           </ExtLink>
+          <ExtLink href={MAPS} className="btn-contact" style={{ background: '#1a1a1a', color: '#fff', border: '1px solid rgba(255,255,255,0.18)' }}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+            </svg>
+            Ver en Google Maps
+          </ExtLink>
         </div>
 
         {/* Right: Info */}
@@ -538,9 +545,15 @@ function Contacto() {
           <h3 style={{ fontFamily: "'Bebas Neue', cursive", fontSize: '1.65rem', letterSpacing: '0.06em', color: '#fff', margin: '0 0 1.5rem' }}>INFORMACIÓN</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.4rem' }}>
             <InfoRow icon={<svg width="22" height="22" viewBox="0 0 24 24" fill="#F97316"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" /></svg>} label="Ubicación">
-              <span>Coronel Brandzen 2178</span>
-              <span>casi Bulevar Artigas</span>
-              <span style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.9rem' }}>Parque Batlle, Montevideo</span>
+              <ExtLink href={MAPS} style={{ color: '#fff', textDecoration: 'none', display: 'flex', flexDirection: 'column', gap: '1px', transition: 'color 0.2s' }}
+                onMouseEnter={e => e.currentTarget.style.color = '#F97316'}
+                onMouseLeave={e => e.currentTarget.style.color = '#fff'}
+              >
+                <span>Coronel Brandzen 2178</span>
+                <span>casi Bulevar Artigas</span>
+                <span style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.9rem', marginTop: '2px' }}>Parque Batlle, Montevideo</span>
+                <span style={{ color: '#F97316', fontSize: '0.8rem', marginTop: '4px', fontWeight: 600, letterSpacing: '0.05em' }}>Ver en Google Maps →</span>
+              </ExtLink>
             </InfoRow>
             <InfoRow icon={<svg width="22" height="22" viewBox="0 0 24 24" fill="#F97316"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" /></svg>} label="Horario">
               <span>Lun–Vie: 07:00–23:00</span>

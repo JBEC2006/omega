@@ -182,37 +182,45 @@ function Hero() {
         backgroundSize: '44px 44px',
       }} />
 
-      <div style={{ position: 'relative', zIndex: 10, textAlign: 'center', padding: '0 1.5rem', maxWidth: '64rem', margin: '0 auto' }}>
-        <p style={{ color: '#F97316', fontSize: '0.88rem', fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '1rem' }}>
-          Coronel Brandzen 2178 · Parque Batlle, Montevideo
-        </p>
-        <h1 style={{
-          fontFamily: "'Bebas Neue', cursive",
-          fontSize: 'clamp(3.5rem, 10vw, 8.5rem)',
-          lineHeight: 0.95,
-          color: '#fff',
-          marginBottom: '1.25rem',
-          margin: '0 0 1.25rem',
-        }}>
-          DONDE SE FORJAN<br />
-          <span style={{ color: '#F97316' }}>LOS MEJORES</span>
-        </h1>
-        <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '0.03em' }}>
-          Entrená en serio. Resultados reales.
-        </p>
+      <div style={{ position: 'relative', zIndex: 10, textAlign: 'center', padding: '2rem 1.5rem', maxWidth: '64rem', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.2rem' }}>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
-          <a href="#planes" className="btn btn-orange">
-            Ver Planes
-          </a>
+        {/* Logo protagonista — ocupa el hero */}
+        <img
+          src={logoNaranja}
+          alt="Gimnasio Omega"
+          style={{
+            width: 'clamp(280px, 52vw, 480px)',
+            height: 'auto',
+            filter: 'drop-shadow(0 0 50px rgba(249,115,22,0.65)) drop-shadow(0 0 120px rgba(249,115,22,0.25))',
+          }}
+        />
+
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+          <h1 style={{
+            fontFamily: "'Bebas Neue', cursive",
+            fontSize: 'clamp(1.9rem, 5vw, 4.2rem)',
+            lineHeight: 1,
+            color: '#fff',
+            margin: 0,
+            letterSpacing: '0.04em',
+          }}>
+            DONDE SE FORJAN&nbsp;
+            <span style={{ color: '#F97316' }}>LOS MEJORES</span>
+          </h1>
+          <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.78rem', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', margin: 0 }}>
+            Coronel Brandzen 2178 · Parque Batlle, Montevideo
+          </p>
+        </div>
+
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.875rem', justifyContent: 'center', marginTop: '0.4rem' }}>
+          <a href="#planes" className="btn btn-orange">Ver Planes</a>
           <ExtLink href={WA_LINK} className="btn btn-green">
             <WhatsAppIcon size={20} />
             Consultar
           </ExtLink>
-          <a href="#horarios" className="btn btn-outline">
-            Ver Horarios
-          </a>
+          <a href="#horarios" className="btn btn-outline">Ver Horarios</a>
         </div>
+
       </div>
 
       <div style={{

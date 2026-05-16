@@ -474,16 +474,13 @@ function Planes() {
               <span style={{ fontWeight: 600, fontSize: '1rem', color: '#111' }}>Hasta 12 sin recargo</span>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', backgroundColor: 'rgba(0,158,227,0.07)', borderRadius: '8px', padding: '10px 14px', marginBottom: '1.25rem' }}>
-              {/* Solo el ícono oval — clip al 50% del alto, sin pixel sobrante */}
-              <div style={{
-                width: '50px', height: '32px', flexShrink: 0,
-                backgroundImage: `url(${mercadoPagoLogo})`,
-                backgroundSize: '50px auto',
-                backgroundPosition: 'top center',
-                backgroundRepeat: 'no-repeat',
-              }} />
-              <span style={{ color: '#009ee3', fontSize: '1rem', fontWeight: 700, whiteSpace: 'nowrap' }}>12 cuotas sin recargo con Mercado Pago</span>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '14px', backgroundColor: 'rgba(0,158,227,0.07)', borderRadius: '8px', padding: '12px 16px', marginBottom: '1.25rem', boxSizing: 'border-box' }}>
+              <img
+                src={mercadoPagoLogo}
+                alt="Mercado Pago"
+                style={{ height: '48px', width: 'auto', display: 'block', flexShrink: 0 }}
+              />
+              <span style={{ color: '#009ee3', fontSize: '1.05rem', fontWeight: 700, whiteSpace: 'nowrap' }}>Hasta 12 cuotas sin recargo</span>
             </div>
 
             <ExtLink href={WA_LINK} className="btn-planes-wa">

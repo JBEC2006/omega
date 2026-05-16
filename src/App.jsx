@@ -588,7 +588,7 @@ function Footer() {
   return (
     <footer style={{ backgroundColor: '#080808', borderTop: '1px solid rgba(255,255,255,0.07)', padding: '2.5rem 1.5rem' }}>
       <div style={{ maxWidth: '72rem', margin: '0 auto' }}>
-        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '1.5rem' }}>
+        <div className="footer-row">
           <Logo small />
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5rem', alignItems: 'center', justifyContent: 'center' }}>
             {NAV_LINKS.map(l => (

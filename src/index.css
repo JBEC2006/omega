@@ -330,6 +330,18 @@ body {
 .nav-link:hover { color: #F97316; }
 .nav-link:hover::after { transform: scaleX(1); }
 
+/* ── Footer row: centrado en mobile, space-between en desktop ─ */
+.footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .footer-row { justify-content: space-between; }
+}
+
 /* ── Footer nav links ─────────────────────────────────────── */
 .footer-link {
   color: rgba(255,255,255,0.38);

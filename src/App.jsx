@@ -476,13 +476,13 @@ function Planes() {
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', backgroundColor: 'rgba(0,158,227,0.07)', borderRadius: '8px', padding: '10px 14px', marginBottom: '1.25rem' }}>
               {/* Solo el ícono oval — clip al 50% del alto, sin pixel sobrante */}
-              <div style={{ width: '52px', height: '27px', overflow: 'hidden', flexShrink: 0, borderRadius: '2px' }}>
-                <img
-                  src={mercadoPagoLogo}
-                  alt="Mercado Pago"
-                  style={{ width: '52px', display: 'block', marginTop: '-1px' }}
-                />
-              </div>
+              <div style={{
+                width: '50px', height: '32px', flexShrink: 0,
+                backgroundImage: `url(${mercadoPagoLogo})`,
+                backgroundSize: '50px auto',
+                backgroundPosition: 'top center',
+                backgroundRepeat: 'no-repeat',
+              }} />
               <span style={{ color: '#009ee3', fontSize: '1rem', fontWeight: 700, whiteSpace: 'nowrap' }}>12 cuotas sin recargo con Mercado Pago</span>
             </div>
 

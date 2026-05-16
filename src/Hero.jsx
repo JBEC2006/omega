@@ -82,9 +82,13 @@ function HeroBtn({ href, style, children, onClick }) {
   )
 }
 
+// Imagen genérica de respaldo — gym oscuro, estilo Equinox (Unsplash, libre de uso)
+const GYM_IMG = 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&q=80&fit=crop&auto=format'
+
 export default function Hero({ bgImage }) {
-  const [imgFailed, setImgFailed] = useState(false)
-  const showImg = Boolean(bgImage) && !imgFailed
+  const [src, setSrc] = useState(bgImage || GYM_IMG)
+  const [failed, setFailed] = useState(false)
+  const showImg = !failed
 
   return (
     <section
@@ -105,10 +109,13 @@ export default function Hero({ bgImage }) {
       {/* Imagen de fondo */}
       {showImg && (
         <img
-          src={bgImage}
+          src={src}
           alt=""
           aria-hidden="true"
-          onError={() => setImgFailed(true)}
+          onError={() => {
+            if (src !== GYM_IMG) setSrc(GYM_IMG)
+            else setFailed(true)
+          }}
           style={{
             position: 'absolute',
             inset: 0,
@@ -121,15 +128,13 @@ export default function Hero({ bgImage }) {
         />
       )}
 
-      {/* Overlay 1: oscuridad pareja (solo cuando hay imagen) */}
-      {showImg && (
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundColor: 'rgba(0,0,0,0.52)',
-          pointerEvents: 'none',
-        }} />
-      )}
+      {/* Overlay 1: oscuridad pareja */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        backgroundColor: 'rgba(0,0,0,0.58)',
+        pointerEvents: 'none',
+      }} />
 
       {/* Overlay 2: degradado inferior — funde hero con la siguiente sección */}
       <div style={{

@@ -149,7 +149,7 @@ export default function Hero({ bgImage }) {
         style={{
           position: 'relative',
           zIndex: 10,
-          padding: '0 6% 44px',
+          padding: '0 6% 28px',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
@@ -232,7 +232,7 @@ export default function Hero({ bgImage }) {
         className="hero-scroll"
         style={{
           position: 'absolute',
-          bottom: '28px',
+          bottom: '12px',
           left: '50%',
           transform: 'translateX(-50%)',
           animation: 'heroBounce 2.2s ease-in-out infinite',

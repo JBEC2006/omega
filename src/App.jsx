@@ -82,34 +82,24 @@ function Navbar() {
       borderBottom: '1px solid rgba(255,255,255,0.08)',
     }}>
       <div style={{ maxWidth: '72rem', margin: '0 auto', padding: '0 1.5rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '96px' }}>
           <Logo />
 
           {/* Desktop links */}
-          <div className="hidden md:flex" style={{ gap: '2rem', alignItems: 'center' }}>
+          <div className="nav-desktop" style={{ gap: '2.5rem', alignItems: 'center' }}>
             {NAV_LINKS.map(l => (
-              <a key={l.href} href={l.href} style={{
-                color: 'rgba(255,255,255,0.65)',
-                textDecoration: 'none',
-                fontSize: '0.875rem',
-                fontWeight: 500,
-                letterSpacing: '0.05em',
-                transition: 'color 0.2s',
-              }}
-                onMouseEnter={e => e.target.style.color = '#F97316'}
-                onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.65)'}
-              >
+              <a key={l.href} href={l.href} className="nav-link">
                 {l.label}
               </a>
             ))}
           </div>
 
-          {/* Hamburger */}
+          {/* Hamburger — solo mobile */}
           <button
-            className="md:hidden"
+            className="nav-mobile"
             onClick={() => setOpen(v => !v)}
             aria-label="Abrir menú"
-            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px', display: 'flex', flexDirection: 'column', gap: '5px' }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px', flexDirection: 'column', gap: '5px' }}
           >
             {[0, 1, 2].map(i => (
               <span key={i} style={{
@@ -126,14 +116,15 @@ function Navbar() {
         </div>
       </div>
 
-      {/* Mobile dropdown */}
-      <div style={{
+      {/* Mobile dropdown — solo mobile */}
+      <div className="nav-mobile" style={{
         overflow: 'hidden',
         maxHeight: open ? '400px' : '0',
         opacity: open ? 1 : 0,
         transition: 'max-height 0.35s ease, opacity 0.25s ease',
         backgroundColor: 'rgba(0,0,0,0.95)',
-      }} className="md:hidden">
+        flexDirection: 'column',
+      }}>
         <div style={{ padding: '0 1.5rem 1.25rem' }}>
           {NAV_LINKS.map(l => (
             <a key={l.href} href={l.href} onClick={() => setOpen(false)} style={{
@@ -195,8 +186,8 @@ function Hero() {
       }} />
 
       <div style={{ position: 'relative', zIndex: 10, textAlign: 'center', padding: '0 1.5rem', maxWidth: '64rem', margin: '0 auto' }}>
-        <p style={{ color: '#F97316', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.35em', textTransform: 'uppercase', marginBottom: '1rem' }}>
-          Montevideo, Uruguay
+        <p style={{ color: '#F97316', fontSize: '0.88rem', fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '1rem' }}>
+          Coronel Brandzen 2178 · Parque Batlle, Montevideo
         </p>
         <h1 style={{
           fontFamily: "'Bebas Neue', cursive",
@@ -214,14 +205,14 @@ function Hero() {
         </p>
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
-          <a href="#planes" style={btnStyle('orange')}>
+          <a href="#planes" className="btn btn-orange">
             Ver Planes
           </a>
-          <ExtLink href={WA_LINK} style={btnStyle('green')}>
+          <ExtLink href={WA_LINK} className="btn btn-green">
             <WhatsAppIcon size={20} />
             Consultar
           </ExtLink>
-          <a href="#horarios" style={btnStyle('outline')}>
+          <a href="#horarios" className="btn btn-outline">
             Ver Horarios
           </a>
         </div>
@@ -270,8 +261,8 @@ function Section({ id, bg = '#0D0D0D', children }) {
 function SectionHeader({ eyebrow, title }) {
   return (
     <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-      <p style={{ color: '#F97316', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.38em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>{eyebrow}</p>
-      <h2 style={{ fontFamily: "'Bebas Neue', cursive", fontSize: 'clamp(2.5rem, 6vw, 3.75rem)', color: '#fff', margin: 0 }}>{title}</h2>
+      <p style={{ color: '#F97316', fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>{eyebrow}</p>
+      <h2 style={{ fontFamily: "'Bebas Neue', cursive", fontSize: 'clamp(2.8rem, 6vw, 4rem)', color: '#fff', margin: 0 }}>{title}</h2>
     </div>
   )
 }
@@ -334,10 +325,10 @@ function Nosotros() {
         {cards.map(c => (
           <Card key={c.title}>
             <div style={{ marginBottom: '1.25rem' }}>{c.icon}</div>
-            <h3 style={{ fontFamily: "'Bebas Neue', cursive", fontSize: '1.6rem', letterSpacing: '0.06em', color: '#fff', margin: '0 0 0.75rem' }}>
+            <h3 style={{ fontFamily: "'Bebas Neue', cursive", fontSize: '1.9rem', letterSpacing: '0.06em', color: '#fff', margin: '0 0 0.75rem' }}>
               {c.title}
             </h3>
-            <p style={{ color: 'rgba(255,255,255,0.58)', fontSize: '0.9rem', lineHeight: 1.65 }}>{c.desc}</p>
+            <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.05rem', lineHeight: 1.7 }}>{c.desc}</p>
           </Card>
         ))}
       </div>
@@ -354,15 +345,15 @@ function Disciplinas() {
         {/* Musculación */}
         <div style={{ backgroundColor: '#1A1A1A', borderRadius: '14px', padding: '2rem', borderTop: '4px solid #F97316', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           <div>
-            <span style={{ color: '#F97316', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.32em', textTransform: 'uppercase', display: 'block', marginBottom: '0.5rem' }}>Acceso libre</span>
+            <span style={{ color: '#F97316', fontSize: '0.82rem', fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', display: 'block', marginBottom: '0.5rem' }}>Acceso libre</span>
             <h3 style={{ fontFamily: "'Bebas Neue', cursive", fontSize: 'clamp(2.2rem, 5vw, 3rem)', letterSpacing: '0.06em', color: '#fff', margin: 0 }}>MUSCULACIÓN</h3>
           </div>
-          <p style={{ color: 'rgba(255,255,255,0.58)', lineHeight: 1.65, fontSize: '0.92rem' }}>
+          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, fontSize: '1.05rem' }}>
             Accedé al salón de musculación en nuestros horarios de apertura. Equipamiento completo: press, cables, máquinas guiadas, mancuernas y mucho más. Entrenás a tu ritmo, con tu programa.
           </p>
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: 0, listStyle: 'none', margin: 0 }}>
             {['Equipamiento de alto rendimiento', 'Acceso en todo el horario del gimnasio', 'Ambiente motivador'].map(i => (
-              <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'rgba(255,255,255,0.68)', fontSize: '0.87rem' }}>
+              <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'rgba(255,255,255,0.75)', fontSize: '1rem' }}>
                 <span style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: '#F97316', flexShrink: 0 }} />
                 {i}
               </li>
@@ -373,26 +364,22 @@ function Disciplinas() {
         {/* Funcional */}
         <div style={{ backgroundColor: '#1A1A1A', borderRadius: '14px', padding: '2rem', borderTop: '4px solid #F97316', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           <div>
-            <span style={{ color: '#F97316', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.32em', textTransform: 'uppercase', display: 'block', marginBottom: '0.5rem' }}>Clases guiadas</span>
+            <span style={{ color: '#F97316', fontSize: '0.82rem', fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', display: 'block', marginBottom: '0.5rem' }}>Clases guiadas</span>
             <h3 style={{ fontFamily: "'Bebas Neue', cursive", fontSize: 'clamp(2.2rem, 5vw, 3rem)', letterSpacing: '0.06em', color: '#fff', margin: 0 }}>FUNCIONAL</h3>
           </div>
-          <p style={{ color: 'rgba(255,255,255,0.58)', lineHeight: 1.65, fontSize: '0.92rem' }}>
+          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, fontSize: '1.05rem' }}>
             Clases grupales con instructores especializados. Entrenamiento de alta intensidad que combina fuerza, resistencia y movilidad. Cupos limitados para máxima atención personalizada.
           </p>
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: 0, listStyle: 'none', margin: 0 }}>
             {['Instructores certificados', 'Grupos reducidos', 'Turnos online disponibles'].map(i => (
-              <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'rgba(255,255,255,0.68)', fontSize: '0.87rem' }}>
+              <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'rgba(255,255,255,0.75)', fontSize: '1rem' }}>
                 <span style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: '#F97316', flexShrink: 0 }} />
                 {i}
               </li>
             ))}
           </ul>
           <div>
-            <ExtLink href={TURNOS} style={{
-              ...btnStyle('orange'),
-              fontSize: '0.95rem',
-              padding: '12px 24px',
-            }}>
+            <ExtLink href={TURNOS} className="btn-disciplina">
               Reservar Turno
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -419,12 +406,12 @@ function Horarios() {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 0', borderBottom: '1px solid rgba(255,255,255,0.09)' }}>
-              <span style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.88rem', fontWeight: 500 }}>Lunes a Viernes</span>
-              <span style={{ color: '#fff', fontWeight: 600, fontSize: '1rem' }}>07:00 – 23:00</span>
+              <span style={{ color: 'rgba(255,255,255,0.65)', fontSize: '1rem', fontWeight: 500 }}>Lunes a Viernes</span>
+              <span style={{ color: '#fff', fontWeight: 700, fontSize: '1.1rem' }}>07:00 – 23:00</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 0' }}>
-              <span style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.88rem', fontWeight: 500 }}>Sábado</span>
-              <span style={{ color: '#fff', fontWeight: 600, fontSize: '1rem' }}>08:00 – 20:00</span>
+              <span style={{ color: 'rgba(255,255,255,0.65)', fontSize: '1rem', fontWeight: 500 }}>Sábado</span>
+              <span style={{ color: '#fff', fontWeight: 700, fontSize: '1.1rem' }}>08:00 – 20:00</span>
             </div>
           </div>
         </Card>
@@ -437,36 +424,22 @@ function Horarios() {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', padding: '14px 0', borderBottom: '1px solid rgba(255,255,255,0.09)' }}>
-              <span style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.88rem', fontWeight: 500 }}>Lun – Vie (tarde)</span>
+              <span style={{ color: 'rgba(255,255,255,0.65)', fontSize: '1rem', fontWeight: 500 }}>Lun – Vie (tarde)</span>
               <div style={{ textAlign: 'right' }}>
-                <div style={{ color: '#fff', fontWeight: 600, fontSize: '0.95rem' }}>19:00 – 20:00</div>
-                <div style={{ color: '#fff', fontWeight: 600, fontSize: '0.95rem' }}>20:00 – 21:00</div>
+                <div style={{ color: '#fff', fontWeight: 700, fontSize: '1.05rem' }}>19:00 – 20:00</div>
+                <div style={{ color: '#fff', fontWeight: 700, fontSize: '1.05rem' }}>20:00 – 21:00</div>
               </div>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 0' }}>
-              <span style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.88rem', fontWeight: 500 }}>Lun · Mié · Vie (mañana)</span>
-              <span style={{ color: '#fff', fontWeight: 600, fontSize: '0.95rem' }}>08:00 – 09:00</span>
+              <span style={{ color: 'rgba(255,255,255,0.65)', fontSize: '1rem', fontWeight: 500 }}>Lun · Mié · Vie (mañana)</span>
+              <span style={{ color: '#fff', fontWeight: 700, fontSize: '1.05rem' }}>08:00 – 09:00</span>
             </div>
           </div>
         </Card>
       </div>
 
       <div style={{ textAlign: 'center' }}>
-        <ExtLink href={TURNOS} style={{
-          display: 'inline-flex', alignItems: 'center', gap: '8px',
-          fontFamily: "'Bebas Neue', cursive",
-          fontSize: '1.1rem', letterSpacing: '0.12em',
-          fontWeight: 700, textDecoration: 'none',
-          padding: '14px 36px', borderRadius: '10px',
-          textTransform: 'uppercase',
-          border: '2px solid #F97316',
-          color: '#F97316',
-          backgroundColor: 'transparent',
-          transition: 'all 0.2s',
-        }}
-          onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#F97316'; e.currentTarget.style.color = '#fff' }}
-          onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#F97316' }}
-        >
+        <ExtLink href={TURNOS} className="btn-outline-orange">
           Reservar Turno Online
         </ExtLink>
       </div>
@@ -495,42 +468,26 @@ function Planes() {
           {/* Card body */}
           <div style={{ backgroundColor: '#fff', padding: '1.75rem 2rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 0', borderBottom: '1px solid #e5e7eb' }}>
-              <span style={{ color: '#6b7280', fontSize: '0.88rem' }}>Total anual</span>
-              <span style={{ fontWeight: 700, fontSize: '1.1rem', color: '#111' }}>$17.400</span>
+              <span style={{ color: '#6b7280', fontSize: '1rem' }}>Total anual</span>
+              <span style={{ fontWeight: 700, fontSize: '1.2rem', color: '#111' }}>$17.400</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 0', borderBottom: '1px solid #e5e7eb' }}>
-              <span style={{ color: '#6b7280', fontSize: '0.88rem' }}>Ahorro vs mensual</span>
-              <span style={{ fontWeight: 700, fontSize: '1.1rem', color: '#F97316' }}>27,5%</span>
+              <span style={{ color: '#6b7280', fontSize: '1rem' }}>Ahorro vs mensual</span>
+              <span style={{ fontWeight: 700, fontSize: '1.2rem', color: '#F97316' }}>27,5%</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 0', marginBottom: '0.75rem' }}>
-              <span style={{ color: '#6b7280', fontSize: '0.88rem' }}>Cuotas disponibles</span>
-              <span style={{ fontWeight: 600, fontSize: '0.9rem', color: '#111' }}>Hasta 12 sin recargo</span>
+              <span style={{ color: '#6b7280', fontSize: '1rem' }}>Cuotas disponibles</span>
+              <span style={{ fontWeight: 600, fontSize: '1rem', color: '#111' }}>Hasta 12 sin recargo</span>
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', backgroundColor: 'rgba(0,158,227,0.09)', borderRadius: '8px', padding: '10px 14px', marginBottom: '1.25rem' }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="#009ee3">
                 <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
               </svg>
-              <span style={{ color: '#009ee3', fontSize: '0.8rem', fontWeight: 600 }}>Mercado Pago — hasta 12 cuotas sin recargo</span>
+              <span style={{ color: '#009ee3', fontSize: '0.92rem', fontWeight: 600 }}>Mercado Pago — hasta 12 cuotas sin recargo</span>
             </div>
 
-            <ExtLink href={WA_LINK} style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
-              backgroundColor: '#25D366',
-              color: '#fff',
-              fontFamily: "'Bebas Neue', cursive",
-              fontSize: '1.05rem', letterSpacing: '0.12em',
-              fontWeight: 700, textDecoration: 'none',
-              padding: '15px 24px',
-              borderRadius: '12px',
-              textTransform: 'uppercase',
-              transition: 'background-color 0.2s, transform 0.2s',
-              width: '100%',
-              boxSizing: 'border-box',
-            }}
-              onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#20bd5a'; e.currentTarget.style.transform = 'scale(1.02)' }}
-              onMouseLeave={e => { e.currentTarget.style.backgroundColor = '#25D366'; e.currentTarget.style.transform = 'scale(1)' }}
-            >
+            <ExtLink href={WA_LINK} className="btn-planes-wa">
               <WhatsAppIcon size={20} />
               Consultar por WhatsApp
             </ExtLink>
@@ -559,24 +516,21 @@ function Contacto() {
       }}>
         {/* Left: Buttons */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <ExtLink href={WA_LINK} style={contactBtnStyle('#25D366', '#fff')}>
+          <ExtLink href={WA_LINK} className="btn-contact" style={{ background: '#25D366', color: '#fff' }}>
             <WhatsAppIcon size={22} />
             Escribinos por WhatsApp
           </ExtLink>
-          <ExtLink href={TURNOS} style={{ ...contactBtnStyle('transparent', '#F97316'), border: '2px solid #F97316' }}
-            onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#F97316'; e.currentTarget.style.color = '#fff' }}
-            onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#F97316' }}
-          >
+          <ExtLink href={TURNOS} className="btn-contact-outline">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
               <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7z" />
             </svg>
             Reservar Turno Online
           </ExtLink>
-          <ExtLink href={INSTAGRAM} style={contactBtnStyle('linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%)', '#fff')}>
+          <ExtLink href={INSTAGRAM} className="btn-contact" style={{ background: 'linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%)', color: '#fff' }}>
             <InstagramIcon size={22} />
             @gimnasio.omega.uy
           </ExtLink>
-          <ExtLink href={TIKTOK} style={{ ...contactBtnStyle('#1a1a1a', '#fff'), border: '1px solid rgba(255,255,255,0.18)' }}>
+          <ExtLink href={TIKTOK} className="btn-contact" style={{ background: '#1a1a1a', color: '#fff', border: '1px solid rgba(255,255,255,0.18)' }}>
             <TikTokIcon size={22} />
             @gimnasioomega.uy
           </ExtLink>
@@ -587,7 +541,9 @@ function Contacto() {
           <h3 style={{ fontFamily: "'Bebas Neue', cursive", fontSize: '1.65rem', letterSpacing: '0.06em', color: '#fff', margin: '0 0 1.5rem' }}>INFORMACIÓN</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.4rem' }}>
             <InfoRow icon={<svg width="22" height="22" viewBox="0 0 24 24" fill="#F97316"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" /></svg>} label="Ubicación">
-              Montevideo, Uruguay
+              <span>Coronel Brandzen 2178</span>
+              <span>casi Bulevar Artigas</span>
+              <span style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.9rem' }}>Parque Batlle, Montevideo</span>
             </InfoRow>
             <InfoRow icon={<svg width="22" height="22" viewBox="0 0 24 24" fill="#F97316"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" /></svg>} label="Horario">
               <span>Lun–Vie: 07:00–23:00</span>
@@ -610,8 +566,8 @@ function InfoRow({ icon, label, children }) {
     <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
       <div style={{ flexShrink: 0, marginTop: '2px' }}>{icon}</div>
       <div>
-        <p style={{ color: 'rgba(255,255,255,0.38)', fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '4px', fontWeight: 700 }}>{label}</p>
-        <div style={{ color: '#fff', fontSize: '0.9rem', lineHeight: 1.55, display: 'flex', flexDirection: 'column' }}>{children}</div>
+        <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.18em', marginBottom: '5px', fontWeight: 700 }}>{label}</p>
+        <div style={{ color: '#fff', fontSize: '1rem', lineHeight: 1.6, display: 'flex', flexDirection: 'column' }}>{children}</div>
       </div>
     </div>
   )
@@ -621,8 +577,8 @@ function contactBtnStyle(bg, color) {
   return {
     display: 'flex', alignItems: 'center', gap: '12px',
     background: bg, color,
-    fontWeight: 600, fontSize: '0.95rem',
-    padding: '14px 20px',
+    fontWeight: 600, fontSize: '1.05rem',
+    padding: '15px 22px',
     borderRadius: '12px',
     textDecoration: 'none',
     transition: 'transform 0.18s, opacity 0.18s',
@@ -639,36 +595,44 @@ function Footer() {
           <Logo small />
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5rem', alignItems: 'center', justifyContent: 'center' }}>
             {NAV_LINKS.map(l => (
-              <a key={l.href} href={l.href} style={{
-                color: 'rgba(255,255,255,0.38)', textDecoration: 'none',
-                fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase',
-                transition: 'color 0.2s',
-              }}
-                onMouseEnter={e => e.target.style.color = 'rgba(255,255,255,0.75)'}
-                onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.38)'}
-              >
-                {l.label}
-              </a>
+              <a key={l.href} href={l.href} className="footer-link">{l.label}</a>
             ))}
           </div>
-          <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-            <ExtLink href={INSTAGRAM} style={{ color: 'rgba(255,255,255,0.4)', transition: 'color 0.2s' }}
-              onMouseEnter={e => e.currentTarget.style.color = '#fff'}
-              onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.4)'}
-            >
-              <InstagramIcon size={18} />
+          <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+            <ExtLink href={WA_LINK} className="icon-link">
+              <WhatsAppIcon size={20} />
             </ExtLink>
-            <ExtLink href={TIKTOK} style={{ color: 'rgba(255,255,255,0.4)', transition: 'color 0.2s' }}
-              onMouseEnter={e => e.currentTarget.style.color = '#fff'}
-              onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.4)'}
-            >
-              <TikTokIcon size={18} />
+            <ExtLink href={INSTAGRAM} className="icon-link">
+              <InstagramIcon size={20} />
+            </ExtLink>
+            <ExtLink href={TIKTOK} className="icon-link">
+              <TikTokIcon size={20} />
             </ExtLink>
           </div>
         </div>
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', marginTop: '2rem', paddingTop: '1.5rem', textAlign: 'center' }}>
-          <p style={{ color: 'rgba(255,255,255,0.22)', fontSize: '0.75rem' }}>
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', marginTop: '2rem', paddingTop: '1.5rem', textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          <p style={{ color: 'rgba(255,255,255,0.28)', fontSize: '0.88rem', margin: 0 }}>
             © 2025 Gimnasio Omega — Todos los derechos reservados
+          </p>
+          <p style={{ margin: 0, fontSize: '0.8rem' }}>
+            <span style={{ color: 'rgba(255,255,255,0.2)' }}>Diseñado por </span>
+            <a
+              href="mailto:jengsoftware@gmail.com"
+              style={{ color: 'rgba(255,255,255,0.38)', textDecoration: 'none', fontWeight: 500, transition: 'color 0.2s' }}
+              onMouseEnter={e => e.target.style.color = '#F97316'}
+              onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.38)'}
+            >
+              JENG Web Development
+            </a>
+            <span style={{ color: 'rgba(255,255,255,0.2)' }}> · </span>
+            <a
+              href="mailto:jengsoftware@gmail.com"
+              style={{ color: 'rgba(255,255,255,0.28)', textDecoration: 'none', transition: 'color 0.2s' }}
+              onMouseEnter={e => e.target.style.color = '#F97316'}
+              onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.28)'}
+            >
+              jengsoftware@gmail.com
+            </a>
           </p>
         </div>
       </div>

@@ -2,8 +2,6 @@ import { useState } from 'react'
 
 const WA_LINK = "https://api.whatsapp.com/send?phone=59897863648&text=Hola%2C%20quiero%20hacer%20una%20consulta."
 
-const FALLBACK_BG = 'radial-gradient(ellipse at 30% 60%, rgba(249,115,22,0.15), transparent 60%), #0D0D0D'
-
 function WhatsAppIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -18,19 +16,14 @@ const styles = `
     0%, 100% { transform: translateX(-50%) translateY(0); }
     50%       { transform: translateX(-50%) translateY(-7px); }
   }
-
   @media (max-width: 767px) {
     .hero-content {
       align-items: center !important;
       text-align: center !important;
-      padding: 0 5% 48px !important;
+      padding-left: 5% !important;
+      padding-right: 5% !important;
     }
-    .hero-content h1 span {
-      display: block;
-    }
-    .hero-badge {
-      display: none !important;
-    }
+    .hero-badge { display: none !important; }
     .hero-buttons {
       flex-direction: column !important;
       width: 100%;
@@ -39,9 +32,7 @@ const styles = `
       width: 100% !important;
       justify-content: center !important;
     }
-    .hero-scroll {
-      display: none !important;
-    }
+    .hero-scroll { display: none !important; }
   }
 `
 
@@ -58,9 +49,9 @@ const btnBase = {
   borderRadius: '4px',
   textTransform: 'uppercase',
   cursor: 'pointer',
-  border: 'none',
   transition: 'transform 200ms ease, opacity 200ms ease',
   whiteSpace: 'nowrap',
+  boxSizing: 'border-box',
 }
 
 function HeroBtn({ href, style, children, onClick }) {
@@ -84,7 +75,8 @@ function HeroBtn({ href, style, children, onClick }) {
 }
 
 export default function Hero({ bgImage }) {
-  const hasBg = Boolean(bgImage)
+  const [imgFailed, setImgFailed] = useState(false)
+  const showImg = Boolean(bgImage) && !imgFailed
 
   return (
     <section
@@ -93,18 +85,22 @@ export default function Hero({ bgImage }) {
         position: 'relative',
         minHeight: '100vh',
         overflow: 'hidden',
-        background: hasBg ? undefined : FALLBACK_BG,
-        backgroundColor: hasBg ? '#0D0D0D' : undefined,
+        /* Fallback gradient siempre presente como background */
+        background: 'radial-gradient(ellipse at 30% 60%, rgba(249,115,22,0.18), transparent 60%), #0D0D0D',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-end',
       }}
     >
       <style>{styles}</style>
 
       {/* Imagen de fondo */}
-      {hasBg && (
+      {showImg && (
         <img
           src={bgImage}
           alt=""
           aria-hidden="true"
+          onError={() => setImgFailed(true)}
           style={{
             position: 'absolute',
             inset: 0,
@@ -117,51 +113,51 @@ export default function Hero({ bgImage }) {
         />
       )}
 
-      {/* Overlay 1: oscuridad pareja */}
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        backgroundColor: 'rgba(0,0,0,0.55)',
-        pointerEvents: 'none',
-      }} />
+      {/* Overlay 1: oscuridad pareja (solo cuando hay imagen) */}
+      {showImg && (
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundColor: 'rgba(0,0,0,0.52)',
+          pointerEvents: 'none',
+        }} />
+      )}
 
-      {/* Overlay 2: degradado inferior para fundir con la siguiente sección */}
+      {/* Overlay 2: degradado inferior — funde hero con la siguiente sección */}
       <div style={{
         position: 'absolute',
         bottom: 0,
         left: 0,
         right: 0,
-        height: '40%',
+        height: '45%',
         background: 'linear-gradient(to bottom, transparent, #0D0D0D)',
         pointerEvents: 'none',
+        zIndex: 1,
       }} />
 
-      {/* Contenido: bottom-left en desktop, centrado en mobile */}
-      <div style={{
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        zIndex: 10,
-        padding: '0 6% 80px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-      }}
+      {/* Contenido — fluye en el flex, empuja hacia el fondo */}
+      <div
         className="hero-content"
+        style={{
+          position: 'relative',
+          zIndex: 10,
+          padding: '0 6% 72px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+        }}
       >
-
         {/* Badge dirección */}
         <p
           className="hero-badge"
           style={{
-            color: 'rgba(255,255,255,0.75)',
+            color: 'rgba(255,255,255,0.7)',
             fontSize: '11px',
             fontFamily: "'Barlow', sans-serif",
             fontWeight: 600,
             letterSpacing: '0.18em',
             textTransform: 'uppercase',
-            margin: '0 0 16px',
+            margin: '0 0 14px',
           }}
         >
           📍 Coronel Brandzen 2178&nbsp;&nbsp;
@@ -172,7 +168,7 @@ export default function Hero({ bgImage }) {
         {/* Headline */}
         <h1 style={{
           fontFamily: "'Bebas Neue', cursive",
-          fontSize: 'clamp(56px, 9vw, 110px)',
+          fontSize: 'clamp(52px, 8.5vw, 108px)',
           lineHeight: 0.9,
           margin: 0,
           color: '#fff',
@@ -186,22 +182,22 @@ export default function Hero({ bgImage }) {
         <p style={{
           fontFamily: "'Barlow', sans-serif",
           fontWeight: 400,
-          fontSize: 'clamp(15px, 2vw, 20px)',
-          color: 'rgba(255,255,255,0.6)',
-          margin: '16px 0 36px',
+          fontSize: 'clamp(14px, 1.8vw, 19px)',
+          color: 'rgba(255,255,255,0.58)',
+          margin: '14px 0 32px',
         }}>
           Entrená en serio. Resultados reales.
         </p>
 
         {/* Botones */}
         <div className="hero-buttons" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <HeroBtn href="#planes" style={{ backgroundColor: '#F97316', color: '#fff' }}>
+          <HeroBtn href="#planes" style={{ backgroundColor: '#F97316', color: '#fff', border: 'none' }}>
             VER PLANES
           </HeroBtn>
           <HeroBtn
             href={WA_LINK}
             onClick={e => { e.preventDefault(); window.open(WA_LINK, '_blank', 'noopener') }}
-            style={{ backgroundColor: '#25D366', color: '#fff' }}
+            style={{ backgroundColor: '#25D366', color: '#fff', border: 'none' }}
           >
             <WhatsAppIcon />
             CONSULTAR
@@ -219,7 +215,7 @@ export default function Hero({ bgImage }) {
         </div>
       </div>
 
-      {/* Indicador de scroll — solo desktop */}
+      {/* Indicador de scroll — centrado, solo desktop */}
       <div
         className="hero-scroll"
         style={{
@@ -228,12 +224,13 @@ export default function Hero({ bgImage }) {
           left: '50%',
           transform: 'translateX(-50%)',
           animation: 'heroBounce 2.2s ease-in-out infinite',
-          opacity: 0.5,
+          opacity: 0.45,
           color: '#fff',
           pointerEvents: 'none',
+          zIndex: 20,
         }}
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="6 9 12 15 18 9" />
         </svg>
       </div>

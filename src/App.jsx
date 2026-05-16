@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import logoNaranja from './assets/omega_logo_naranja_transparente.png'
+import logoBlanco from './assets/omega_logo_blanco_transparente.png'
+import mercadoPagoLogo from './assets/mercado_pago_logo_transparente.png'
 
 const WA_LINK = "https://api.whatsapp.com/send?phone=59897863648&text=Hola%2C%20quiero%20hacer%20una%20consulta."
 const INSTAGRAM = "https://www.instagram.com/gimnasio.omega.uy/"
@@ -15,26 +18,19 @@ const NAV_LINKS = [
 ]
 
 function Logo({ small = false }) {
+  const h = small ? 40 : 52
   return (
-    <a href="#hero" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-      <svg width={small ? 22 : 28} height={small ? 22 : 28} viewBox="0 0 32 32" fill="none">
-        <rect x="4" y="14" width="24" height="4" rx="2" fill="#F97316" opacity="0.25" />
-        <rect x="4" y="15" width="24" height="2.5" rx="1.25" fill="#F97316" />
-        <rect x="2" y="11" width="5" height="10" rx="2" fill="#F97316" />
-        <rect x="25" y="11" width="5" height="10" rx="2" fill="#F97316" />
-        <rect x="0" y="13" width="3.5" height="6" rx="1.75" fill="#F97316" opacity="0.7" />
-        <rect x="28.5" y="13" width="3.5" height="6" rx="1.75" fill="#F97316" opacity="0.7" />
-        <text x="16" y="11.5" textAnchor="middle" fontFamily="'Bebas Neue', cursive" fontSize="10" fill="#F97316">Ω</text>
-      </svg>
-      <span style={{
-        fontFamily: "'Bebas Neue', cursive",
-        fontSize: small ? '1rem' : '1.2rem',
-        letterSpacing: '0.15em',
-        color: '#F97316',
-        lineHeight: 1,
-      }}>
-        GIMNASIO OMEGA
-      </span>
+    <a href="#hero" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+      <img src={logoNaranja} alt="Gimnasio Omega" height={h} style={{ height: h, width: 'auto', objectFit: 'contain' }} />
+    </a>
+  )
+}
+
+function LogoBlanco({ small = false }) {
+  const h = small ? 40 : 52
+  return (
+    <a href="#hero" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+      <img src={logoBlanco} alt="Gimnasio Omega" height={h} style={{ height: h, width: 'auto', objectFit: 'contain' }} />
     </a>
   )
 }
@@ -478,10 +474,15 @@ function Planes() {
               <span style={{ fontWeight: 600, fontSize: '1rem', color: '#111' }}>Hasta 12 sin recargo</span>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', backgroundColor: 'rgba(0,158,227,0.09)', borderRadius: '8px', padding: '10px 14px', marginBottom: '1.25rem' }}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="#009ee3">
-                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
-              </svg>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', backgroundColor: 'rgba(0,158,227,0.07)', borderRadius: '8px', padding: '10px 14px', marginBottom: '1.25rem' }}>
+              {/* Solo el ícono oval — imagen cuadrada, oval ocupa el 52% superior */}
+              <div style={{ width: '44px', height: '24px', overflow: 'hidden', flexShrink: 0 }}>
+                <img
+                  src={mercadoPagoLogo}
+                  alt="Mercado Pago"
+                  style={{ width: '44px', display: 'block' }}
+                />
+              </div>
               <span style={{ color: '#009ee3', fontSize: '0.92rem', fontWeight: 600 }}>Mercado Pago — hasta 12 cuotas sin recargo</span>
             </div>
 
@@ -602,7 +603,7 @@ function Footer() {
     <footer style={{ backgroundColor: '#080808', borderTop: '1px solid rgba(255,255,255,0.07)', padding: '2.5rem 1.5rem' }}>
       <div style={{ maxWidth: '72rem', margin: '0 auto' }}>
         <div className="footer-row">
-          <Logo small />
+          <LogoBlanco small />
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5rem', alignItems: 'center', justifyContent: 'center' }}>
             {NAV_LINKS.map(l => (
               <a key={l.href} href={l.href} className="footer-link">{l.label}</a>

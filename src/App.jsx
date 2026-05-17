@@ -125,7 +125,7 @@ function Navbar() {
       }}>
         <div style={{ padding: '0 1.5rem 1.25rem' }}>
           {NAV_LINKS.map(l => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)} style={{
+            <a key={l.href} href={l.href} onClick={(e) => { e.preventDefault(); setOpen(false); setTimeout(() => { document.querySelector(l.href)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 370); }} style={{
               display: 'block',
               color: 'rgba(255,255,255,0.8)',
               textDecoration: 'none',

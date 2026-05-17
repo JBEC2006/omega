@@ -80,7 +80,7 @@ function Navbar() {
       borderBottom: '1px solid rgba(255,255,255,0.08)',
     }}>
       <div style={{ padding: '0 3rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '108px' }}>
+        <div className="nav-bar-inner" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Logo />
 
           {/* Desktop links */}
@@ -334,7 +334,7 @@ function Horarios() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 0', borderBottom: '1px solid rgba(255,255,255,0.09)' }}>
               <span style={{ color: 'rgba(255,255,255,0.65)', fontSize: '1rem', fontWeight: 500 }}>Lunes a Viernes</span>
-              <span style={{ color: '#fff', fontWeight: 700, fontSize: '1.1rem' }}>07:00 – 23:00</span>
+              <span style={{ color: '#fff', fontWeight: 700, fontSize: '1.1rem' }}>06:30 – 23:00</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 0' }}>
               <span style={{ color: 'rgba(255,255,255,0.65)', fontSize: '1rem', fontWeight: 500 }}>Sábado</span>
@@ -487,7 +487,7 @@ function Contacto() {
               </ExtLink>
             </InfoRow>
             <InfoRow icon={<svg width="22" height="22" viewBox="0 0 24 24" fill="#F97316"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" /></svg>} label="Horario">
-              <span>Lun–Vie: 07:00–23:00</span>
+              <span>Lun–Vie: 06:30–23:00</span>
               <span>Sáb: 08:00–20:00</span>
             </InfoRow>
             <InfoRow icon={<svg width="22" height="22" viewBox="0 0 24 24" fill="#F97316"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" /></svg>} label="Teléfono">
@@ -553,7 +553,7 @@ function Footer() {
         </div>
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', marginTop: '2rem', paddingTop: '1.5rem', textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '6px' }}>
           <p style={{ color: 'rgba(255,255,255,0.28)', fontSize: '0.88rem', margin: 0 }}>
-            © 2025 Gimnasio Omega — Todos los derechos reservados
+            © {new Date().getFullYear()} Gimnasio Omega — Todos los derechos reservados
           </p>
           <p style={{ margin: 0, fontSize: '0.8rem' }}>
             <span style={{ color: 'rgba(255,255,255,0.2)' }}>Diseñado por </span>

@@ -11,7 +11,7 @@
 html { scroll-behavior: smooth; scroll-padding-top: 108px; }
 
 @media (max-width: 767px) {
-  html { scroll-padding-top: 95px; }
+  html { scroll-padding-top: 96px; }
 }
 
 body {
@@ -33,7 +33,7 @@ body {
 .nav-bar-inner { height: 108px; }
 
 @media (max-width: 767px) {
-  .nav-bar-inner { height: 95px; }
+  .nav-bar-inner { height: 96px; }
 }
 
 @media (min-width: 768px) {
